@@ -37,7 +37,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
 
         request_data = self.data.decode('utf-8')
         request_array = request_data.split('\r\n')[0]
-        print(request_data)
+        #print(request_data)
         request_method = request_data.split()[0]
         request_URI = request_data.split()[1]
  
@@ -72,7 +72,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
             #https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
             if os.path.exists(filepath):
                 f = open(filepath, 'r')
-                thedata = f.read()
+                thedata = '\r\n\r\n'+f.read()
                 print(thedata)
                 f.close()
                 self.sendResponse(MIMA_type, thedata)
