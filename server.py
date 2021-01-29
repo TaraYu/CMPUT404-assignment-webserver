@@ -31,7 +31,7 @@ class MyWebServer(socketserver.BaseRequestHandler):
     
     def handle(self):
         self.data = self.request.recv(1024).strip()
-        print ("Got a request of: %s\n" % self.data)
+        #print ("Got a request of: %s\n" % self.data)
         #Receive data from the client, 1024 bytes each time
 
 
@@ -67,13 +67,13 @@ class MyWebServer(socketserver.BaseRequestHandler):
 
 
             filepath = 'www' + request_URI
-            print(filepath)
+            #print(filepath)
             #check whether file exist:
             #https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
             if os.path.exists(filepath):
                 f = open(filepath, 'r')
                 thedata = '\r\n\r\n'+f.read()
-                print(thedata)
+                #print(thedata)
                 f.close()
                 self.sendResponse(MIMA_type, thedata)
                 return
